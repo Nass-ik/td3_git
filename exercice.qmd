@@ -95,3 +95,30 @@ print(paste("Nombre total de trajets (31/12) :", total_3112))
 ```
 
 
+Q5 
+Implémentez une fonction compter_nombre_boucle(). Cette fonction comptera le nombre de 
+boucles dans un data.frame. Appliquez également sur les quatre data.frame. Pouviezvous 
+prédire certains résultats
+
+```{r}
+# Définition de la fonction
+compter_nombre_boucle <- function(df) {
+  # On trouve les valeurs uniques de la colonne, puis on compte combien il y en a
+  nb_unique <- length(unique(df$Numéro.de.boucle))
+  
+  return(nb_unique)
+}
+
+# Application de la fonction sur tes 4 tableaux
+nb_boucles_664 <- compter_nombre_boucle(df_b_664)
+nb_boucles_788 <- compter_nombre_boucle(df_b_788)
+nb_boucles_2512 <- compter_nombre_boucle(df_d_2512)
+nb_boucles_3112 <- compter_nombre_boucle(df_d_3112)
+
+
+print(paste("Nombre de boucles dans df_b_664 :", nb_boucles_664))
+print(paste("Nombre de boucles dans df_b_788 :", nb_boucles_788))
+print(paste("Nombre de boucles le 25/12 :", nb_boucles_2512))
+print(paste("Nombre de boucles le 31/12 :", nb_boucles_3112))
+```
+
