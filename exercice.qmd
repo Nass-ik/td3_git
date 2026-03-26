@@ -122,3 +122,45 @@ print(paste("Nombre de boucles le 25/12 :", nb_boucles_2512))
 print(paste("Nombre de boucles le 31/12 :", nb_boucles_3112))
 ```
 
+
+Q6
+ Implémentez une fonction trouver_trajet_max(). Cette fonction identifiera quel est la paire 
+bouclejour avec le maximum de passages décomptés. Elle retournera un objet contenant :
+• Le nom de la boucle
+• Le jour correspondant au maximum de passage enregistrés
+• Le nombre de passages enregistrés
+```{r}
+# Définition de la fonction
+trouver_trajet_max <- function(df) {
+
+  ligne_record <- which.max(df$Total)
+  
+  
+  nom <- df$Boucle.de.comptage[ligne_record]
+  jour <- df$Jour[ligne_record]
+  passages <- df$Total[ligne_record]
+  
+
+  resultat <- list(
+    Nom_de_la_boucle = nom,
+    Jour_du_record = jour,
+    Nombre_de_passages = passages
+  )
+  
+  return(resultat)
+}
+```
+
+```{r}
+
+record_664 <- trouver_trajet_max(df_b_664)
+record_788 <- trouver_trajet_max(df_b_788)
+record_2512 <- trouver_trajet_max(df_d_2512)
+record_3112 <- trouver_trajet_max(df_d_3112)
+
+print(record_664)
+print(record_788)
+print(record_2512)
+print(record_3112)
+```
+
