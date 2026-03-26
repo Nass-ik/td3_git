@@ -26,3 +26,43 @@ df_d_2512 <- subset(df_velo, Jour == "2025-12-25")
 df_d_3112 <- subset(df_velo, Jour == "2025-12-31")
 ```
 
+Q3
+Implémentez une fonction filtre_anomalie(). Cette fonction prendra en entrée un 
+data.frame respectant le même schéma que notre jeu de données df_velo. Elle retournera le 
+même data.frame sans les lignes contenant des anomalies Forte ou Faible. Appliquez cette 
+fonction sur les data.frame définis cidessus. Combien de lignes sont filtrées ?
+
+```{r}
+# Définition de la fonction
+filtre_anomalie <- function(df) {
+  # On garde uniquement les lignes qui ne sont ni "Forte" ni "Faible"
+  # Le symbole ! veut dire "NON" (l'inverse) et %in% vérifie si c'est dans la liste
+  df_propre <- subset(df, !(Probabilité.de.présence.d.anomalies %in% c("Forte", "Faible")))
+  
+  # La fonction renvoie le tableau nettoyé
+  return(df_propre)
+}
+```
+
+
+
+```{r}
+# On applique la fonction sur nos 4 tableaux
+df_b_664_propre <- filtre_anomalie(df_b_664)
+df_b_788_propre <- filtre_anomalie(df_b_788)
+df_d_2512_propre <- filtre_anomalie(df_d_2512)
+df_d_3112_propre <- filtre_anomalie(df_d_3112)
+
+# On calcule combien de lignes ont été filtrées (Avant - Après)
+lignes_filtrees_664 <- nrow(df_b_664) - nrow(df_b_664_propre)
+lignes_filtrees_788 <- nrow(df_b_788) - nrow(df_b_788_propre)
+lignes_filtrees_2512 <- nrow(df_d_2512) - nrow(df_d_2512_propre)
+lignes_filtrees_3112 <- nrow(df_d_3112) - nrow(df_d_3112_propre)
+
+# On affiche les résultats dans la console
+print(paste("Lignes retirées pour la boucle 664 :", lignes_filtrees_664))
+print(paste("Lignes retirées pour la boucle 788 :", lignes_filtrees_788))
+print(paste("Lignes retirées pour le 25/12 :", lignes_filtrees_2512))
+print(paste("Lignes retirées pour le 31/12 :", lignes_filtrees_3112))
+```
+
