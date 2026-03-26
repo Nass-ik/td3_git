@@ -66,3 +66,32 @@ print(paste("Lignes retirées pour le 25/12 :", lignes_filtrees_2512))
 print(paste("Lignes retirées pour le 31/12 :", lignes_filtrees_3112))
 ```
 
+Q4
+ Implémentez une fonction compter_nombre_trajets(). Cette fonction prendra en entrée un 
+data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera le nombre total de trajets référencés. Appliquez cette fonction sur les data.frame définis ci dessus.
+
+```{r}
+# Définition de la fonction
+compter_nombre_trajets <- function(df) {
+  # On additionne toutes les valeurs de la colonne 'Total'
+  # L'argument na.rm = TRUE permet d'ignorer les cases vides (NA) pour éviter les erreurs
+  total_trajets <- sum(df$Total, na.rm = TRUE)
+  
+  # La fonction renvoie le total
+  return(total_trajets)
+}
+
+# Application de la fonction sur tes petits dataframes (de la question 2)
+total_664 <- compter_nombre_trajets(df_b_664)
+total_788 <- compter_nombre_trajets(df_b_788)
+total_2512 <- compter_nombre_trajets(df_d_2512)
+total_3112 <- compter_nombre_trajets(df_d_3112)
+
+
+print(paste("Nombre total de trajets (boucle 664) :", total_664))
+print(paste("Nombre total de trajets (boucle 788) :", total_788))
+print(paste("Nombre total de trajets (25/12) :", total_2512))
+print(paste("Nombre total de trajets (31/12) :", total_3112))
+```
+
+
