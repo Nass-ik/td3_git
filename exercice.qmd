@@ -3,4 +3,26 @@ title: "td3"
 format: html
 editor: visual
 ---
+Importez le jeu de données téléchargé, et nommez l’objet df_velo. Créez deux data.frame 
+contenant les informations relatives à vos deux boucles favorites, nommés sur le format 
+df_b_numero (e.g df_b_788 pour la boucle de 50 Otages Nord), ainsi que deux data.frames 
+comprenant les informations relatives à vos deux jours favoris, nommés selon le format 
+df_d_date (e.g df_d_0105 pour la boucle du 1er mai). Nous utiliserons ces data.frames pour 
+faire des tests dans la suite.
+
+```{r}
+df_velo <- read.csv2("data/244400404_comptages-velo-nantes-metropole.csv")
+```
+
+```{r}
+# 2. Création des dataframes pour 2 boucles
+# J'utilise la boucle 664 (vue dans tes données) et la 788 (donnée en exemple par ton prof)
+df_b_664 <- subset(df_velo, Numéro.de.boucle == 664)
+df_b_788 <- subset(df_velo, Numéro.de.boucle == 788)
+
+# 3. Création des dataframes pour 2 dates
+# J'utilise le format de ta colonne "Jour", par exemple le 25 décembre et le 31 décembre 2025
+df_d_2512 <- subset(df_velo, Jour == "2025-12-25")
+df_d_3112 <- subset(df_velo, Jour == "2025-12-31")
+```
 
